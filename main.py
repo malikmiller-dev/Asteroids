@@ -25,6 +25,11 @@ def main():
     dt = 0
     while True:
         updatable.update(dt)
+        for asteroid in asteroids:
+            if asteroid.collides_with(player):
+                log_event("player_hit")
+                print("Game over!")
+                sys.exit()
         log_state()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
