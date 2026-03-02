@@ -28,25 +28,26 @@ def main():
     clock = pygame.time.Clock()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     dt = 0
+    print(f"Starting Asteroids with pygame version: {pygame.version.ver}")
     while True:
         updatable.update(dt)
         for asteroid in asteroids:
             if asteroid.collides_with(player):
                 log_event("player_hit")
                 print("Game over!")
-                sys.exit()
+                main()
             for shot in shots:
                 if asteroid.collides_with(shot):
                     log_event("asteroid_kill")
+                    print("Asteroid Destroyed")
                     asteroid.split()
-                    log_event("asteroid_shot")
+                    log_event("asteroid_split")
                     shot.kill()
         log_state()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
         screen.fill("black")
-        print(f"Starting Asteroids with pygame version: {pygame.version.ver}")
         for obj in drawable:
             obj.draw(screen)
         pygame.display.flip()
