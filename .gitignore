@@ -7,6 +7,8 @@ build/
 dist/
 wheels/
 *.egg-info
+pyproject.toml
+.python-version
 
 # Virtual environments
 .venv
@@ -14,3 +16,6 @@ uv.lock
 
 # JSON files
 game_state.jsonl
+
+#.txt files
+notes.txt

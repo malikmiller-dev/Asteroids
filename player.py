@@ -49,6 +49,10 @@ class Player(CircleShape):
         rotated_with_speed_vector = rotated_vector * PLAYER_SPEED * dt
         self.position += rotated_with_speed_vector
 
+    def reset(self):
+        """This should reset the player position when killed"""
+        pass
+
     def shoot(self) -> None:
         if self.cool_down > 0:
             return
